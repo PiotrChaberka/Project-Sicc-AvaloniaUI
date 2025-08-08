@@ -1,0 +1,332 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Project_SICC.Views.ClientsPageView">
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid RowDefinitions="Auto, Auto, *" ColumnDefinitions="1*, 1*" 
+              Margin="10" RowSpacing="5" ColumnSpacing="10" 
+              Background="#1c1c1c" MinWidth="800">
+
+            <!-- Add Client Panel (Upper Left) -->
+            <Border Grid.Row="0" Grid.Column="0" 
+                    Background="#1e1e1e" 
+                    BorderBrush="#2d2d2d" 
+                    BorderThickness="1" 
+                    CornerRadius="5" 
+                    Padding="10">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Add New Client" 
+                               FontWeight="Bold" 
+                               FontSize="16" 
+                               Foreground="#ffffff" 
+                               HorizontalAlignment="Center"/>
+                    
+                    <TextBox x:Name="Add_Name" 
+                             Watermark="First Name" 
+                             Background="#1c1c1c" 
+                             Foreground="#ffffff" 
+                             BorderBrush="#2d2d2d"
+                             Padding="8"/>
+                    
+                    <TextBox x:Name="Add_Surname" 
+                             Watermark="Last Name" 
+                             Background="#1c1c1c" 
+                             Foreground="#ffffff" 
+                             BorderBrush="#2d2d2d"
+                             Padding="8"/>
+                    
+                    <TextBox x:Name="Add_PESEL" 
+                             Watermark="PESEL Number" 
+                             Background="#1c1c1c" 
+                             Foreground="#ffffff" 
+                             BorderBrush="#2d2d2d"
+                             Padding="8"/>
+                    
+                    <TextBox x:Name="Add_Address" 
+                             Watermark="Address" 
+                             Background="#1c1c1c" 
+                             Foreground="#ffffff" 
+                             BorderBrush="#2d2d2d"
+                             Padding="8"/>
+                    
+                    <TextBox x:Name="Add_CompanyType" 
+                             Watermark="Company Type (e.g., LLC, Corporation)" 
+                             Background="#1c1c1c" 
+                             Foreground="#ffffff" 
+                             BorderBrush="#2d2d2d"
+                             Padding="8"/>
+                    
+                    <TextBox x:Name="Add_Revenue" 
+                             Watermark="Yearly Revenue (USD)" 
+                             Background="#1c1c1c" 
+                             Foreground="#ffffff" 
+                             BorderBrush="#2d2d2d"
+                             Padding="8"/>
+                    
+                    <Button Content="Add Client" 
+                            Click="OnAddClientClick" 
+                            Background="#2d2d2d" 
+                            Foreground="#ffffff" 
+                            Padding="10,8"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Search Client Panel (Upper Right) -->
+            <Border Grid.Row="0" Grid.Column="1" 
+                    Background="#1e1e1e" 
+                    BorderBrush="#2d2d2d" 
+                    BorderThickness="1" 
+                    CornerRadius="5" 
+                    Padding="10">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Search Client by ID" 
+                               FontWeight="Bold" 
+                               FontSize="16" 
+                               Foreground="#ffffff" 
+                               HorizontalAlignment="Center"/>
+                    
+                    <TextBox x:Name="Search_Id" 
+                             Watermark="Enter Client ID or PESEL" 
+                             Background="#1c1c1c" 
+                             Foreground="#ffffff" 
+                             BorderBrush="#2d2d2d"
+                             Padding="8"/>
+                    
+                    <Button Content="Search" 
+                            Click="OnSearchClientClick" 
+                            Background="#2d2d2d" 
+                            Foreground="#ffffff" 
+                            Padding="10,8"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"/>
+
+                    <!-- Search Result Panel -->
+                    <Border x:Name="Search_ResultPanel" 
+                            IsVisible="False" 
+                            Background="#252525" 
+                            BorderBrush="#2d2d2d" 
+                            BorderThickness="1" 
+                            CornerRadius="3" 
+                            Padding="10" 
+                            Margin="0,10,0,0">
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Client Information" 
+                                       FontWeight="Bold" 
+                                       FontSize="14" 
+                                       Foreground="#ffffff"
+                                       HorizontalAlignment="Center"/>
+
+                            <Grid ColumnDefinitions="Auto, *" RowSpacing="5" ColumnSpacing="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="ID:" 
+                                           FontWeight="SemiBold" Foreground="#cccccc"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="Display_Id" 
+                                           Foreground="#ffffff" TextWrapping="Wrap"/>
+                                
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Name:" 
+                                           FontWeight="SemiBold" Foreground="#cccccc"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="Display_Name" 
+                                           Foreground="#ffffff" TextWrapping="Wrap"/>
+                                
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Surname:" 
+                                           FontWeight="SemiBold" Foreground="#cccccc"/>
+                                <TextBlock Grid.Row="2" Grid.Column="1" x:Name="Display_Surname" 
+                                           Foreground="#ffffff" TextWrapping="Wrap"/>
+                                
+                                <TextBlock Grid.Row="3" Grid.Column="0" Text="PESEL:" 
+                                           FontWeight="SemiBold" Foreground="#cccccc"/>
+                                <TextBlock Grid.Row="3" Grid.Column="1" x:Name="Display_PESEL" 
+                                           Foreground="#ffffff" TextWrapping="Wrap"/>
+                                
+                                <TextBlock Grid.Row="4" Grid.Column="0" Text="Address:" 
+                                           FontWeight="SemiBold" Foreground="#cccccc"/>
+                                <TextBlock Grid.Row="4" Grid.Column="1" x:Name="Display_Address" 
+                                           Foreground="#ffffff" TextWrapping="Wrap"/>
+                                
+                                <TextBlock Grid.Row="5" Grid.Column="0" Text="Company:" 
+                                           FontWeight="SemiBold" Foreground="#cccccc"/>
+                                <TextBlock Grid.Row="5" Grid.Column="1" x:Name="Display_CompanyType" 
+                                           Foreground="#ffffff" TextWrapping="Wrap"/>
+                                
+                                <TextBlock Grid.Row="6" Grid.Column="0" Text="Revenue:" 
+                                           FontWeight="SemiBold" Foreground="#cccccc"/>
+                                <TextBlock Grid.Row="6" Grid.Column="1" x:Name="Display_Revenue" 
+                                           Foreground="#ffffff" TextWrapping="Wrap"/>
+                            </Grid>
+                            
+                            <TextBlock x:Name="Display_Tax" 
+                                       FontWeight="Bold" 
+                                       Foreground="#ffffff" 
+                                       HorizontalAlignment="Center"
+                                       Margin="0,5,0,10"/>
+
+                            <Button x:Name="EditButton" 
+                                    Content="Edit Client" 
+                                    Click="OnEditButtonClick" 
+                                    Background="#2d2d2d" 
+                                    Foreground="#ffffff" 
+                                    Padding="10,8"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- Edit Client Panel (Bottom, spans both columns) -->
+            <Border Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" 
+                    x:Name="EditPanel" 
+                    IsVisible="False" 
+                    Background="#1e1e1e" 
+                    BorderBrush="#2d2d2d" 
+                    BorderThickness="1" 
+                    CornerRadius="5" 
+                    Padding="10" 
+                    Margin="0,5,0,0">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Edit Client Information" 
+                               FontWeight="Bold" 
+                               FontSize="16" 
+                               Foreground="#ffffff" 
+                               HorizontalAlignment="Center"/>
+
+                    <!-- First Row of Edit Fields -->
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Width="180" Spacing="5" Margin="5">
+                            <TextBlock Text="Client ID (Auto-Generated)" 
+                                       FontWeight="SemiBold" 
+                                       Foreground="#cccccc"/>
+                            <TextBox x:Name="Edit_Id" 
+                                     IsReadOnly="True" 
+                                     Background="#2a2a2a" 
+                                     Foreground="#888888" 
+                                     BorderBrush="#2d2d2d"
+                                     Padding="8"/>
+                        </StackPanel>
+
+                        <StackPanel Width="180" Spacing="5" Margin="5">
+                            <TextBlock Text="First Name" 
+                                       FontWeight="SemiBold" 
+                                       Foreground="#cccccc"/>
+                            <TextBox x:Name="Edit_Name" 
+                                     Background="#1c1c1c" 
+                                     Foreground="#ffffff" 
+                                     BorderBrush="#2d2d2d"
+                                     Padding="8"/>
+                        </StackPanel>
+
+                        <StackPanel Width="180" Spacing="5" Margin="5">
+                            <TextBlock Text="Last Name" 
+                                       FontWeight="SemiBold" 
+                                       Foreground="#cccccc"/>
+                            <TextBox x:Name="Edit_Surname" 
+                                     Background="#1c1c1c" 
+                                     Foreground="#ffffff" 
+                                     BorderBrush="#2d2d2d"
+                                     Padding="8"/>
+                        </StackPanel>
+
+                        <StackPanel Width="180" Spacing="5" Margin="5">
+                            <TextBlock Text="PESEL Number" 
+                                       FontWeight="SemiBold" 
+                                       Foreground="#cccccc"/>
+                            <TextBox x:Name="Edit_PESEL" 
+                                     Background="#1c1c1c" 
+                                     Foreground="#ffffff" 
+                                     BorderBrush="#2d2d2d"
+                                     Padding="8"/>
+                        </StackPanel>
+                    </WrapPanel>
+
+                    <!-- Second Row of Edit Fields -->
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Width="180" Spacing="5" Margin="5">
+                            <TextBlock Text="Address" 
+                                       FontWeight="SemiBold" 
+                                       Foreground="#cccccc"/>
+                            <TextBox x:Name="Edit_Address" 
+                                     Background="#1c1c1c" 
+                                     Foreground="#ffffff" 
+                                     BorderBrush="#2d2d2d"
+                                     Padding="8"/>
+                        </StackPanel>
+
+                        <StackPanel Width="180" Spacing="5" Margin="5">
+                            <TextBlock Text="Company Type" 
+                                       FontWeight="SemiBold" 
+                                       Foreground="#cccccc"/>
+                            <TextBox x:Name="Edit_CompanyType" 
+                                     Background="#1c1c1c" 
+                                     Foreground="#ffffff" 
+                                     BorderBrush="#2d2d2d"
+                                     Padding="8"/>
+                        </StackPanel>
+
+                        <StackPanel Width="180" Spacing="5" Margin="5">
+                            <TextBlock Text="Yearly Revenue" 
+                                       FontWeight="SemiBold" 
+                                       Foreground="#cccccc"/>
+                            <TextBox x:Name="Edit_Revenue" 
+                                     Background="#1c1c1c" 
+                                     Foreground="#ffffff" 
+                                     BorderBrush="#2d2d2d"
+                                     Padding="8"/>
+                        </StackPanel>
+
+                        <StackPanel Width="180" Spacing="5" Margin="5">
+                            <TextBlock Text="Estimated Tax (19%)" 
+                                       FontWeight="SemiBold" 
+                                       Foreground="#cccccc"/>
+                            <Border Background="#2a2a2a" 
+                                    BorderBrush="#2d2d2d" 
+                                    BorderThickness="1" 
+                                    CornerRadius="3" 
+                                    Padding="8">
+                                <TextBlock x:Name="Edit_Tax" 
+                                           Foreground="#ffffff" 
+                                           FontWeight="SemiBold"/>
+                            </Border>
+                        </StackPanel>
+                    </WrapPanel>
+
+                    <!-- Action Buttons -->
+                    <StackPanel Orientation="Horizontal" 
+                                HorizontalAlignment="Center" 
+                                Spacing="15">
+                        <Button Content="Save Changes" 
+                                Click="OnSaveClientClick" 
+                                Background="#2d2d2d" 
+                                Foreground="#ffffff" 
+                                Width="130" 
+                                Padding="10,8"/>
+                        
+                        <Button Content="Delete Client" 
+                                Click="OnDeleteClientClick" 
+                                Background="#2d2d2d" 
+                                Foreground="#ffffff" 
+                                Width="130" 
+                                Padding="10,8"/>
+                        
+                        <Button Content="Cancel" 
+                                Click="OnCancelEditClick" 
+                                Background="#2d2d2d" 
+                                Foreground="#ffffff" 
+                                Width="130" 
+                                Padding="10,8"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Project SICC/App.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/Assets/Icons.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/ViewModels/ContractorDetailsView.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/Views/ClientsPageView.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/Views/ContractorDetailsView.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/Views/ContractorsPageView.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/Views/ContractsHistoryView.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/Views/ContractsView.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/Views/HomePageView.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/Views/HomePageViewModel.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/Views/InvoicingPageView.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/Views/MainWindow.axaml" value="Project SICC/Project SICC.csproj" />
+        <entry key="Project SICC/Views/ProductsView.axaml" value="Project SICC/Project SICC.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

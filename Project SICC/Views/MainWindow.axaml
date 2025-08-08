@@ -1,0 +1,55 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Project_SICC.ViewModels"
+        xmlns:d="htRtp://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="720"
+        x:Class="Project_SICC.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Project_SICC"
+        Width="1200"
+        Height="720"
+        CanResize="False"
+        RequestedThemeVariant="Dark">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <SplitView IsPaneOpen="{Binding IsPaneOpen}"
+            OpenPaneLength="250"
+            DisplayMode="CompactInline"
+            CompactPaneLength="52"
+            Background="#1c1c1c"
+            PaneBackground="#1e1e1e">
+        <!-- General split scrip pane info ends here -->  
+        <SplitView.Pane>
+            <StackPanel Spacing="5" Margin="5">
+                <Button Command="{Binding TriggerPane}">
+                    <PathIcon Data="{StaticResource MenuLeftRightIcon}"></PathIcon>
+                </Button>
+                <!-- An Overly complicated way to dynamically bind button names to the left pane panel --> 
+                <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedListItem}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:ListItemTemplate}">
+                            <StackPanel Spacing="15" Orientation="Horizontal">
+                                <PathIcon Data="{Binding ListItemIcon}" />
+                                <TextBlock Text="{Binding Label}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <!-- Content start here -->  
+            <Border CornerRadius="10" Background="#2d2d2d">
+                <TransitioningContentControl Content="{Binding CurrentPage}" />
+            </Border>
+        </SplitView.Content>
+    </SplitView>
+
+</Window>

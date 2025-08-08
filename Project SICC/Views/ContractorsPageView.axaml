@@ -1,0 +1,44 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Project_SICC.Views.ContractorsPageView">
+    <Grid Background="#1c1c1c" RowDefinitions="Auto,*,Auto" Margin="20">
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#1e1e1e" BorderBrush="#2d2d2d" BorderThickness="0,0,0,1" Padding="15">
+            <TextBlock Text="Contractors" FontWeight="Bold" FontSize="20" Foreground="#ffffff" HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Main Content with 2x2 Grid of Buttons -->
+        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Button 1: Contractor Details -->
+            <Button Grid.Row="0" Grid.Column="0" Content="Contractor Details" Background="#2d2d2d" Foreground="#ffffff" 
+                    FontSize="20" Padding="30" CornerRadius="10" Width="450" Height="280" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="OnContractorDetailsClick"/>
+
+            <!-- Button 2: Contracts History -->
+            <Button Grid.Row="0" Grid.Column="1" Content="Contracts History" Background="#2d2d2d" Foreground="#ffffff" 
+                    FontSize="20" Padding="30" CornerRadius="10" Width="450" Height="280" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="OnContractsHistoryClick"/>
+
+            <!-- Button 3: Contracts -->
+            <Button Grid.Row="1" Grid.Column="0" Content="Contracts" Background="#2d2d2d" Foreground="#ffffff" 
+                    FontSize="20" Padding="30" CornerRadius="10" Width="450" Height="280" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="OnContractsClick"/>
+
+            <!-- Button 4: Products -->
+            <Button Grid.Row="1" Grid.Column="1" Content="Products" Background="#2d2d2d" Foreground="#ffffff" 
+                    FontSize="20" Padding="30" CornerRadius="10" Width="450" Height="280" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="OnProductsClick"/>
+        </Grid>
+
+        <!-- Spacer at Bottom -->
+        <Border Grid.Row="2" Background="#1e1e1e" Height="20"/>
+    </Grid>
+</UserControl>
