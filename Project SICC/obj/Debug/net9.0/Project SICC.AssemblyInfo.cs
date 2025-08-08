@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Project SICC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+483cdf4d6150c7d4c8d6bc0ccb941dbe8f9c6e0b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Project SICC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Project SICC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
