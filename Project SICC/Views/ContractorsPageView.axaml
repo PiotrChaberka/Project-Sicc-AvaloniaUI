@@ -2,43 +2,143 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d"
+             d:DesignWidth="900" d:DesignHeight="600"
              x:Class="Project_SICC.Views.ContractorsPageView">
-    <Grid Background="#1c1c1c" RowDefinitions="Auto,*,Auto" Margin="20">
+
+    <UserControl.Styles>
+        <!-- Card style -->
+        <Style Selector="Button.card">
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="BorderBrush" Value="#2D2D2D"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style Selector="Button.card:pointerover /template/ Border">
+            <Setter Property="Background" Value="#2A2A2A"/>
+        </Style>
+        <Style Selector="Button.card:pointerover">
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1.02" ScaleY="1.02"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid Background="#121212" RowDefinitions="Auto,*,Auto" Margin="20">
+
         <!-- Header -->
-        <Border Grid.Row="0" Background="#1e1e1e" BorderBrush="#2d2d2d" BorderThickness="0,0,0,1" Padding="15">
-            <TextBlock Text="Contractors" FontWeight="Bold" FontSize="20" Foreground="#ffffff" HorizontalAlignment="Center"/>
-        </Border>
+        <StackPanel Grid.Row="0" Margin="0,0,0,25" HorizontalAlignment="Center">
+            <TextBlock Text="Contractors"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       Margin="0,0,0,8"
+                       TextAlignment="Center"/>
+            <TextBlock Text="Manage contractors, contracts, history, and related products"
+                       Foreground="#cccccc"
+                       FontSize="14"
+                       TextAlignment="Center"/>
+        </StackPanel>
 
-        <!-- Main Content with 2x2 Grid of Buttons -->
-        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <!-- Cards -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <WrapPanel Orientation="Horizontal"
+                       HorizontalAlignment="Center"
+                       Margin="20,50,0,0">
 
-            <!-- Button 1: Contractor Details -->
-            <Button Grid.Row="0" Grid.Column="0" Content="Contractor Details" Background="#2d2d2d" Foreground="#ffffff" 
-                    FontSize="20" Padding="30" CornerRadius="10" Width="450" Height="280" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="OnContractorDetailsClick"/>
+                <!-- Contractor Details -->
+                <Button Classes="card"
+                        Width="300" Height="160"
+                        Margin="0,0,20,20"
+                        Click="OnContractorDetailsClick">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Contractor Details"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Foreground="White"
+                                   Margin="0,0,0,5"
+                                   TextAlignment="Center"/>
+                        <TextBlock Text="View and edit contractor info, contacts, and company data."
+                                   Foreground="#aaaaaa"
+                                   FontSize="13"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+                    </StackPanel>
+                </Button>
 
-            <!-- Button 2: Contracts History -->
-            <Button Grid.Row="0" Grid.Column="1" Content="Contracts History" Background="#2d2d2d" Foreground="#ffffff" 
-                    FontSize="20" Padding="30" CornerRadius="10" Width="450" Height="280" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="OnContractsHistoryClick"/>
+                <!-- Contracts History -->
+                <Button Classes="card"
+                        Width="300" Height="160"
+                        Margin="0,0,20,20"
+                        Click="OnContractsHistoryClick">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Contracts History"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Foreground="White"
+                                   Margin="0,0,0,5"
+                                   TextAlignment="Center"/>
+                        <TextBlock Text="Review past contracts, durations, and milestones."
+                                   Foreground="#aaaaaa"
+                                   FontSize="13"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+                    </StackPanel>
+                </Button>
 
-            <!-- Button 3: Contracts -->
-            <Button Grid.Row="1" Grid.Column="0" Content="Contracts" Background="#2d2d2d" Foreground="#ffffff" 
-                    FontSize="20" Padding="30" CornerRadius="10" Width="450" Height="280" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="OnContractsClick"/>
+                <!-- Contracts -->
+                <Button Classes="card"
+                        Width="300" Height="160"
+                        Margin="0,0,20,20"
+                        Click="OnContractsClick">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Contracts"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Foreground="White"
+                                   Margin="0,0,0,5"
+                                   TextAlignment="Center"/>
+                        <TextBlock Text="Browse active contracts and manage agreements."
+                                   Foreground="#aaaaaa"
+                                   FontSize="13"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+                    </StackPanel>
+                </Button>
 
-            <!-- Button 4: Products -->
-            <Button Grid.Row="1" Grid.Column="1" Content="Products" Background="#2d2d2d" Foreground="#ffffff" 
-                    FontSize="20" Padding="30" CornerRadius="10" Width="450" Height="280" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="OnProductsClick"/>
-        </Grid>
+                <!-- Products -->
+                <Button Classes="card"
+                        Width="300" Height="160"
+                        Margin="0,0,20,20"
+                        Click="OnProductsClick">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Products"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Foreground="White"
+                                   Margin="0,0,0,5"
+                                   TextAlignment="Center"/>
+                        <TextBlock Text="View and manage products linked to contracts."
+                                   Foreground="#aaaaaa"
+                                   FontSize="13"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+                    </StackPanel>
+                </Button>
 
-        <!-- Spacer at Bottom -->
-        <Border Grid.Row="2" Background="#1e1e1e" Height="20"/>
+            </WrapPanel>
+        </ScrollViewer>
+
+        <!-- Footer -->
+        <Border Grid.Row="2" Background="#1E1E1E" Height="20"/>
     </Grid>
 </UserControl>
