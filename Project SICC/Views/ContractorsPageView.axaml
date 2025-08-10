@@ -49,16 +49,26 @@
                        TextAlignment="Center"/>
         </StackPanel>
 
-        <!-- Cards -->
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <WrapPanel Orientation="Horizontal"
-                       HorizontalAlignment="Center"
-                       Margin="20,50,0,0">
+        <!-- Cards in fixed 2x2 grid -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,50,0,0">
+            <Grid HorizontalAlignment="Center"
+                  ColumnSpacing="20" RowSpacing="15"
+                  MaxWidth="640">  <!-- 2 cards * 300 width + spacing -->
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="160"/>
+                    <RowDefinition Height="160"/>
+                </Grid.RowDefinitions>
 
                 <!-- Contractor Details -->
                 <Button Classes="card"
+                        Grid.Row="0" Grid.Column="0"
                         Width="300" Height="160"
-                        Margin="0,0,20,20"
                         Click="OnContractorDetailsClick">
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="Contractor Details"
@@ -77,8 +87,8 @@
 
                 <!-- Contracts History -->
                 <Button Classes="card"
+                        Grid.Row="0" Grid.Column="1"
                         Width="300" Height="160"
-                        Margin="0,0,20,20"
                         Click="OnContractsHistoryClick">
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="Contracts History"
@@ -97,8 +107,8 @@
 
                 <!-- Contracts -->
                 <Button Classes="card"
+                        Grid.Row="1" Grid.Column="0"
                         Width="300" Height="160"
-                        Margin="0,0,20,20"
                         Click="OnContractsClick">
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="Contracts"
@@ -117,8 +127,8 @@
 
                 <!-- Products -->
                 <Button Classes="card"
+                        Grid.Row="1" Grid.Column="1"
                         Width="300" Height="160"
-                        Margin="0,0,20,20"
                         Click="OnProductsClick">
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="Products"
@@ -135,7 +145,7 @@
                     </StackPanel>
                 </Button>
 
-            </WrapPanel>
+            </Grid>
         </ScrollViewer>
 
         <!-- Footer -->
