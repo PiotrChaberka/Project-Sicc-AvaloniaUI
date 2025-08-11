@@ -2,7 +2,7 @@
 
 ![AvaloniaUI](https://img.shields.io/badge/UI%20Framework-AvaloniaUI-blue)
 ![.NET](https://img.shields.io/badge/.NET-8.0-purple)
-![Status](https://img.shields.io/badge/Status-Proof%20of%20Concept-green)
+![Status](https://img.shields.io/badge/Status-In%20Progress-orange)
 
 > **Project SICC** is a **cross-platform desktop application prototype** built with [AvaloniaUI](https://avaloniaui.net/) and Entity Framework Core.  
 > It serves as a *proof of concept* to demonstrate the use of **modern .NET technologies**, **MVVM architecture**, and **database integration** in a flexible, platform-agnostic environment.
