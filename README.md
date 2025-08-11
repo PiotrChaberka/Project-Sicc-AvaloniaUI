@@ -42,7 +42,7 @@ The focus is **not** on delivering a complete end-user product, but rather on sh
 | UI Framework   | [AvaloniaUI](https://avaloniaui.net/)         |
 | Language       | C# / .NET 8                                   |
 | Architecture   | MVVM (Model–View–ViewModel)                   |
-| Database       | SQLite via Entity Framework Core              |
+| Database       | PostgreSQL Entity Framework Core              |
 | Data Access    | Microsoft.EntityFrameworkCore                 |
 
 ---
