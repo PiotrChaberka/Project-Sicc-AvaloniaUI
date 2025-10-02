@@ -25,7 +25,7 @@ The focus is **not** on delivering a complete end-user product, but rather on sh
 ## 🖥️ Key Features
 
 - **Modern, responsive UI** powered by Avalonia.
-- **Data persistence** using SQLite + EF Core.
+- **Data persistence** using PostgreSQL + EF Core.
 - **Entity management** for:
   - Clients
   - Contractors
